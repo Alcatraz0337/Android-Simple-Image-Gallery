@@ -65,7 +65,7 @@ public class pictureFolderAdapter extends RecyclerView.Adapter<pictureFolderAdap
         //String text = "("+folder.getNumberOfPics()+") "+folder.getFolderName();
         String text = folder.getFolderName()+"\n"+folder.getNumberOfPics()+" Media";
         SpannableString ss = new SpannableString(text);
-        StyleSpan italicSpan = new StyleSpan(Typeface.BOLD_ITALIC);
+        StyleSpan italicSpan = new StyleSpan(Typeface.ITALIC);
         ss.setSpan(italicSpan,0,folder.getFolderName().length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         ss.setSpan(new RelativeSizeSpan(0.8f),folder.getFolderName().length()+1,text.length(),Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
