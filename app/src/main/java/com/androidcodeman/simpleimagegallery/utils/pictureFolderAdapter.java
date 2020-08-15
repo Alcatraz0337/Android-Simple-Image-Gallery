@@ -4,6 +4,13 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.graphics.Typeface;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.AbsoluteSizeSpan;
+import android.text.style.RelativeSizeSpan;
+import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,8 +62,15 @@ public class pictureFolderAdapter extends RecyclerView.Adapter<pictureFolderAdap
                 .apply(new RequestOptions().centerCrop())
                 .into(holder.folderPic);
 
-        String text = "("+folder.getNumberOfPics()+") "+folder.getFolderName();
-        holder.folderName.setText(text);
+        //String text = "("+folder.getNumberOfPics()+") "+folder.getFolderName();
+        String text = folder.getFolderName()+"\n"+folder.getNumberOfPics()+" Media";
+        SpannableString ss = new SpannableString(text);
+        StyleSpan italicSpan = new StyleSpan(Typeface.BOLD_ITALIC);
+        ss.setSpan(italicSpan,0,folder.getFolderName().length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        ss.setSpan(new RelativeSizeSpan(0.8f),folder.getFolderName().length()+1,text.length(),Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        //holder.folderName.setText(text);
+        holder.folderName.setText(ss);
 
         holder.folderPic.setOnClickListener(new View.OnClickListener() {
             @Override
